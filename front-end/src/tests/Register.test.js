@@ -14,28 +14,29 @@ describe('Testa funcionalidade da tela register', () => {
   });
 
   it('Verifica se tem quatro input na tela ', () => {
-    const input1 = screen.getByTestId('common_register__input-name');
-    const input2 = screen.getByTestId('common_register__input-email');
-    const input3 = screen.getByTestId('common_register__input-password');
-    const input4 = screen.getByTestId('common_register__element-invalid_register')
-    expect(input1).toBeInTheDocument();
-    expect(input2).toBeInTheDocument();
-    expect(input3).toBeInTheDocument();
-    expect(input4).toBeInTheDocument();
+    const inputName = screen.getByTestId('common_register__input-name');
+    const inputEmail = screen.getByTestId('common_register__input-email');
+    const inputPassword = screen.getByTestId('common_register__input-password');
+    const inputInvalid = screen.getByTestId('common_register__element-invalid_register');
+
+    expect(inputName).toBeInTheDocument();
+    expect(inputEmail).toBeInTheDocument();
+    expect(inputPassword).toBeInTheDocument();
+    expect(inputInvalid).toBeInTheDocument();
   });
 
   it('Verifica se tem um botão na tela', () => {
-    const button1 = screen.getByTestId('common_register__button-register');
-    expect(button1).toBeInTheDocument();
+    const btnRegister = screen.getByTestId('common_register__button-register');
+    expect(btnRegister).toBeInTheDocument();
   });
 
   it(
     'Testa se ao clicar no botão CADASTRAR, é redirecionado para página de produtos',
     () => {
       history.push('/register');
-      const btn1 = screen.getByRole('button', { name: /CADASTRAR/i });
-      expect(btn1).toBeInTheDocument();
-      userEvent.click(btn1);
+      const btn = screen.getByRole('button', { name: /CADASTRAR/i });
+      expect(btn).toBeInTheDocument();
+      userEvent.click(btn);
       const { pathname } = history.location;
       expect(pathname).toBe('/customer/products');
     },
