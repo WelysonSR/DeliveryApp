@@ -1,13 +1,20 @@
+import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-// import axios from 'axios';
-import renderRouter from './RenderRouter';
+import axios from 'axios';
+import renderWithRouter from './RenderRouter';
 import App from '../App';
-import Login from '../pages/Login';
 
-describe('Testa página de login', () => {
+describe('Testa funcionalidade da tela login', () => {
+  let history;
+  beforeEach(() => {
+    history = renderWithRouter(<App />).history;
+    jest.spyOn(axios, 'post');
+  });
+
+  afterEach(() => { jest.clearAllMocks(); });
+
   it('Testa se o botão é desativado com os inputs vazios', async () => {
-    const { history } = renderRouter(<App />);
     history.push('/login');
 
     const btnLogin = await screen.getByTestId('common_login__button-login');
@@ -15,14 +22,12 @@ describe('Testa página de login', () => {
   });
 
   it('Testa se a página de login está na rota /', () => {
-    const { history } = renderRouter(<App />);
     history.push('/login');
 
     expect(history.location.pathname).toBe('/');
   });
 
   it('Verifica se tem três input na tela ', () => {
-    const { history } = renderRouter(<Login />);
     history.push('/login');
 
     const inputEmail = screen.getByTestId('common_login__input-email');
@@ -35,7 +40,6 @@ describe('Testa página de login', () => {
   });
 
   it('Verifica se tem dois botões na tela', () => {
-    const { history } = renderRouter(<Login />);
     history.push('/login');
 
     const btnLogin = screen.getByTestId('common_login__button-login');
@@ -48,7 +52,6 @@ describe('Testa página de login', () => {
   it(
     'Testa se ao clicar no botão Não tenho, é redirecionado para página de registro',
     () => {
-      const { history } = renderRouter(<App />);
       history.push('/login');
 
       const btnRegister = screen.getByRole('button', { name: /Ainda não tenho conta/i });
