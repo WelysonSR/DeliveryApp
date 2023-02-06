@@ -1,15 +1,15 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import axios from 'axios';
-import renderWithRouter from './RenderRouter';
+import api from './helpers/api';
+import renderWithRouter from './helpers/RenderRouter';
 import App from '../App';
 
 describe('Testa funcionalidade da tela login', () => {
   let history;
   beforeEach(() => {
     history = renderWithRouter(<App />).history;
-    jest.spyOn(axios, 'post');
+    jest.spyOn(api, 'post');
   });
 
   afterEach(() => { jest.clearAllMocks(); });
