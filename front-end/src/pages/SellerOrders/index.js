@@ -6,10 +6,10 @@ import * as S from './styles';
 
 export default function SellerOrders() {
   const [sales, setSales] = useState([]);
-  const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     const getSales = async () => {
+      const user = JSON.parse(localStorage.getItem('user'));
       const { data } = await api.get('http://localhost:3001/sales');
       const filter = data.filter((sale) => sale.sellerId === user.id);
       setSales(filter);

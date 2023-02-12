@@ -45,7 +45,7 @@ function Login() {
     if (userLogin && userLogin?.role === 'customer') {
       history.push('/customer/products');
     }
-  }, []);
+  }, [history]);
 
   return (
     <S.Main>

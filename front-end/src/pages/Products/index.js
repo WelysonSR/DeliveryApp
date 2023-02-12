@@ -15,40 +15,38 @@ function Products() {
   const cart = useSelector(({ products }) => products.checkout);
   const validate = cart.length > 1;
 
-  const getAxios = async () => {
-    try {
-      const URL = 'http://localhost:3001/product';
-      const { data } = await axios.get(URL);
-      setApi(data);
-      history.push('/customer/products');
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const getEmpyCart = () => {
-    const products = api.map((product) => ({
-      id: product.id,
-      name: product.name,
-      price: (+product.price),
-      quantity: 0,
-    }));
-    localStorage.setItem('carrinho', JSON.stringify(products));
-    dispatch(checkoutRedux(products));
-  };
-
   useEffect(() => {
+    const getAxios = async () => {
+      try {
+        const URL = 'http://localhost:3001/product';
+        const { data } = await axios.get(URL);
+        setApi(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
     getAxios();
   }, []);
 
   useEffect(() => {
+    const getEmpyCart = () => {
+      const products = api.map((product) => ({
+        id: product.id,
+        name: product.name,
+        price: (+product.price),
+        quantity: 0,
+      }));
+      localStorage.setItem('carrinho', JSON.stringify(products));
+      dispatch(checkoutRedux(products));
+    };
+
     const cartLocalSt = JSON.parse(localStorage.getItem('carrinho'));
     if (!cartLocalSt || cartLocalSt.length === 0) {
       getEmpyCart();
     } else {
       dispatch(checkoutRedux(cartLocalSt));
     }
-  }, [api]);
+  }, [api, dispatch]);
 
   const changeProduct = (value, id) => {
     if (value === '+') {

@@ -40,7 +40,7 @@ export default function NewUser() {
       dispatch(userRedux(data));
     };
     getUser();
-  }, [counter]);
+  }, [counter, dispatch]);
 
   useEffect(() => {
     const validation = () => {

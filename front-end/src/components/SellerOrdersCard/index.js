@@ -17,7 +17,7 @@ export default function SellerOrdersCard({
   useEffect(() => {
     const momentDate = moment(saleDate);
     setDate(momentDate.format('DD/MM/YYYY'));
-  }, []);
+  }, [saleDate]);
 
   return (
     <S.OrderCard className="rounded shadow">

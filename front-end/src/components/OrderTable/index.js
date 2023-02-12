@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkout as checkoutRedux } from '../../redux/reducer/products';
 
@@ -12,6 +12,14 @@ const tableRmv = 'customer_checkout__element-order-table-remove-';
 export default function OrderTable() {
   const dispatch = useDispatch();
   const cart = useSelector(({ products }) => products.checkout);
+
+  useEffect(() => {
+    const getCart = () => {
+      const localSt = JSON.parse(localStorage.getItem('carrinho'));
+      dispatch(checkoutRedux(localSt));
+    };
+    getCart();
+  }, [dispatch]);
 
   const columns = () => (
     <tr>

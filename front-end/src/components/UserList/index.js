@@ -11,7 +11,7 @@ export default function UserList() {
   const newUser = useSelector(({ login }) => login.users);
 
   useEffect(() => {
-    const gatuser = async () => {
+    const getUser = async () => {
       try {
         const URL = 'http://localhost:3001/user';
         const { data } = await axios.get(URL);
@@ -20,11 +20,11 @@ export default function UserList() {
         console.log(err);
       }
     };
-    gatuser();
+    getUser();
     if (api.length < newUser.length) {
       setApi(newUser);
     }
-  }, [newUser]);
+  }, [newUser, api]);
 
   const deleteUser = async (id) => {
     const user = JSON.parse(localStorage.getItem('user'));
