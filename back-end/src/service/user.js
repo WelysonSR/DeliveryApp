@@ -46,10 +46,10 @@ const deliteUser = async (id) => {
   const userExist = await user.findOne({ where: { id } });
   if (!userExist) throw new Error(errorsTypes.USER_EXIST);
   const result = await user.destroy({ where: { id } });
-  if (result){
-    return await getAllUser();
+  if (result) {
+    return getAllUser();
   }
-}
+};
   
 module.exports = {
   login,
