@@ -9,6 +9,8 @@
     - Faz a comunicação entre clientes e pessoas vendedoras: a pessoa cliente faz o pedido via "carrinho de compras" e a pessoa vendedora aprova, prepara e envia esse pedido. Quando o produto é recebido por quem comprou, essa pessoa marca o pedido como "recebido". Ambos devem possuir detalhes sobre seus pedidos;
     - Se a pessoa cliente faz o pedido, o mesmo aparece para a pessoa vendedora em seu dash de pedidos após a atualização da página. A pessoa cliente, por sua vez, possui as informações sobre seu pedido quando sua página for atualizada, ou seja, ter informações se o pedido está sendo preparado ou se já saiu pra entrega;
 
+<br>
 
+# [Acesse a documentação por aqui!](https://documenter.getpostman.com/view/25807192/2s93CHvFGo)
 # [Acesse o projeto por aqui!](https://secretive-writer-production.up.railway.app/login)
 # [Outros projetos](https://portfolio-lcsrbr.vercel.app/projects)
