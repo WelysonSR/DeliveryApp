@@ -1,9 +1,11 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import axios from 'axios';
-import renderWithRouter from './RenderRouter';
+import * as axios from 'axios';
+import renderWithRouter from './helpers/RenderRouter';
 import App from '../App';
+
+const costumerLink = '/customer/products';
 
 describe('Testa funcionalidade da tela produtos', () => {
   let history;
@@ -15,13 +17,13 @@ describe('Testa funcionalidade da tela produtos', () => {
   afterEach(() => { jest.clearAllMocks(); });
 
   it('Testa se a página de products está na rota /customer/products', () => {
-    history.push('/customer/products');
+    history.push(costumerLink);
 
-    expect(history.location.pathname).toBe('/customer/products');
+    expect(history.location.pathname).toBe(costumerLink);
   });
 
   it('Testa se é possível adicionar e remover produtos do carrinho', () => {
-    history.push('/customer/products');
+    history.push(costumerLink);
 
     const quantity = screen
       .getByTestId('customer_products__input-card-quantity-1');
@@ -55,7 +57,7 @@ describe('Testa funcionalidade da tela produtos', () => {
   });
 
   it('Testa se é possível fazer logout', () => {
-    history.push('/customer/products');
+    history.push(costumerLink);
 
     const btnlogout = screen
       .getByTestId('customer_products__element-navbar-link-logout');

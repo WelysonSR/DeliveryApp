@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory, withRouter } from 'react-router-dom';
 import * as EmailValidator from 'email-validator';
 import { useDispatch } from 'react-redux';
-import axios from 'axios';
 import { password as reduxPswrd, user } from '../../redux/reducer/login';
 import * as S from './styles';
+import { loginAxios } from '../../utils/axios';
 
 const minLength = 6;
 function Login() {
@@ -18,10 +18,9 @@ function Login() {
 
   const handleClick = async (event) => {
     event.preventDefault();
-    const URL = 'http://localhost:3001/user/login';
     const login = { email, password };
     try {
-      const { data } = await axios.post(URL, login);
+      const { data } = await loginAxios(login);
       localStorage.setItem('user', JSON.stringify(data));
       dispatch(user(email));
       dispatch(reduxPswrd(password));

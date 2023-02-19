@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import api from 'axios';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import NavBar from '../../components/NavBar';
 import OrderDatailTable from '../../components/OrderDetailsTable';
 import * as S from './styles';
+import { salesIdAxios, patchStatusAxios } from '../../utils/axios';
 
 export default function OrderDetails() {
   const [details, setDetails] = useState();
@@ -12,16 +12,14 @@ export default function OrderDetails() {
 
   useEffect(() => {
     const getDetails = async () => {
-      const { data } = await api.get(`http://localhost:3001/sales/${paramsId}`);
+      const { data } = await salesIdAxios(paramsId);
       setDetails(data);
     };
     getDetails();
   }, [paramsId]);
 
   const deliveredSale = async () => {
-    const { token } = JSON.parse(localStorage.getItem('user'));
-    api.defaults.headers.common.Authorization = token;
-    const { data } = await api.patch(`http://localhost:3001/sales/${paramsId}`, { status: 'Entregue' });
+    const { data } = await patchStatusAxios(paramsId, 'Entregue');
     setDetails(data);
   };
 

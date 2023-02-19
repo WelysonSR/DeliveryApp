@@ -1,38 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import moment from 'moment/moment';
 import NavBar from '../../components/NavBar';
 import * as S from './styles';
 import Table from './Table';
+import { patchStatusAxios, salesIdAxios } from '../../utils/axios';
 
 export default function SellerOrderDetails() {
   const [details, setDetails] = useState(null);
   const [date, setDate] = useState('');
-  const [user, setUser] = useState({});
   const [status, setStatus] = useState('Pendente');
   const { id: paramsId } = useParams();
 
   useEffect(() => {
     const getDetails = async () => {
-      const { data } = await axios.get(`http://localhost:3001/sales/${paramsId}`);
+      const { data } = await salesIdAxios(paramsId);
       setDetails(data);
       const momentDate = moment(data.saleDate);
       setDate(momentDate.format('DD/MM/YYYY'));
-      setUser(JSON.parse(localStorage.getItem('user')));
       setStatus(data.status);
     };
     getDetails();
   }, [paramsId]);
   // return (<div> oi</div>);
 
-  const changeStatus = async (param) => {
-    const URL = `http://localhost:3001/sales/${paramsId}`;
-    await axios.patch(URL, { status: param }, {
-      headers: {
-        Authorization: user.token,
-      },
-    });
+  const changeStatus = async (id, param) => {
+    await patchStatusAxios(id, param);
     setStatus(param);
   };
 
@@ -80,7 +73,7 @@ export default function SellerOrderDetails() {
             </h2>
             <button
               data-testid="seller_order_details__button-preparing-check"
-              onClick={ () => changeStatus('Preparando') }
+              onClick={ () => changeStatus(paramsId, 'Preparando') }
               disabled={ status !== 'Pendente' }
               type="button"
               className="btn btn-danger"
@@ -89,7 +82,7 @@ export default function SellerOrderDetails() {
             </button>
             <button
               data-testid="seller_order_details__button-dispatch-check"
-              onClick={ () => changeStatus('Em Trânsito') }
+              onClick={ () => changeStatus(paramsId, 'Em Trânsito') }
               disabled={ status !== 'Preparando' }
               type="button"
               className="btn btn-danger"

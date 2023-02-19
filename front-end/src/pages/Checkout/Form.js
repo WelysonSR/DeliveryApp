@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import { getUserAxios, registerSalesAxios } from '../../utils/axios';
 
 function Form() {
   const [seller, setSeller] = useState([]);
@@ -16,8 +16,7 @@ function Form() {
   useEffect(() => {
     const getAxios = async () => {
       try {
-        const URL = 'http://localhost:3001/user';
-        const { data } = await axios.get(URL);
+        const { data } = await getUserAxios();
         const result = data.filter((u) => u.role === 'seller');
         setApi(result);
       } catch (err) {
@@ -32,7 +31,6 @@ function Form() {
 
   const postAxios = async () => {
     try {
-      const URL = 'http://localhost:3001/sales/';
       const obj = {
         products: cart.filter((product) => product.quantity > 0),
         userId: Number(user.id),
@@ -41,12 +39,7 @@ function Form() {
         deliveryAddress: address,
         deliveryNumber: Number(number),
       };
-
-      const { data } = await axios.post(URL, obj, {
-        headers: {
-          Authorization: user.token,
-        },
-      });
+      const { data } = await registerSalesAxios(obj);
       const url = `/customer/orders/${data.id}`;
       history.push(url);
     } catch (err) {

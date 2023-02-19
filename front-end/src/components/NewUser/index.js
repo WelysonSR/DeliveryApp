@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import * as EmailValidator from 'email-validator';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { users as userRedux } from '../../redux/reducer/login';
 import * as S from './styles';
+import { registerAdmAxios, getUserAxios } from '../../utils/axios';
 
 export default function NewUser() {
   const [name, setName] = useState('');
@@ -12,22 +12,16 @@ export default function NewUser() {
   const [role, setRole] = useState('seller');
   const [disabledBtn, setDisabledBtn] = useState(true);
   const [validate, setvalidate] = useState(false);
-  const user = JSON.parse(localStorage.getItem('user'));
   const [counter, setCounter] = useState(0);
 
   const dispatch = useDispatch();
 
   const handleClick = async (event) => {
     event.preventDefault();
-    const URL = 'http://localhost:3001/user/register-adm';
     const register = { name, email, password, role };
 
     try {
-      await axios.post(URL, register, {
-        headers: {
-          Authorization: user.token,
-        },
-      });
+      await registerAdmAxios(register);
       setCounter(counter + 1);
     } catch (err) {
       setvalidate(true);
@@ -36,7 +30,7 @@ export default function NewUser() {
 
   useEffect(() => {
     const getUser = async () => {
-      const { data } = await axios.get('http://localhost:3001/user');
+      const { data } = await getUserAxios();
       dispatch(userRedux(data));
     };
     getUser();

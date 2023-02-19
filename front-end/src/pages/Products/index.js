@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, withRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
 import { checkout as checkoutRedux } from '../../redux/reducer/products';
 import NavBar from '../../components/NavBar';
 import * as S from './styles';
+import { productAxios } from '../../utils/axios';
 
 function Products() {
   const [api, setApi] = useState([]);
@@ -18,8 +18,7 @@ function Products() {
   useEffect(() => {
     const getAxios = async () => {
       try {
-        const URL = 'http://localhost:3001/product';
-        const { data } = await axios.get(URL);
+        const { data } = await productAxios();
         setApi(data);
       } catch (err) {
         console.log(err);

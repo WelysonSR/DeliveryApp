@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-
-import axios from 'axios';
 import * as EmailValidator from 'email-validator';
+import { registerAxios } from '../../utils/axios';
 import * as S from './styles';
 
 export default function Register() {
@@ -28,10 +27,9 @@ export default function Register() {
 
   const handleClick = async (event) => {
     event.preventDefault();
-    const URL = 'http://localhost:3001/user/register';
     const register = { name, email, password };
     try {
-      const { data } = await axios.post(URL, register);
+      const { data } = await registerAxios(register);
       localStorage.setItem('user', JSON.stringify(data));
       history.push('/customer/products');
     } catch (err) {

@@ -2,7 +2,7 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import axios from 'axios';
-import renderWithRouter from './RenderRouter';
+import renderWithRouter from './helpers/RenderRouter';
 import App from '../App';
 
 describe('Testa funcionalidade da tela register', () => {

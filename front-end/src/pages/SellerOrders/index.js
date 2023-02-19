@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import api from 'axios';
 import NavBar from '../../components/NavBar';
 import SellerOrdersCard from '../../components/SellerOrdersCard';
 import * as S from './styles';
+import { getSalesAxios } from '../../utils/axios';
 
 export default function SellerOrders() {
   const [sales, setSales] = useState([]);
@@ -10,7 +10,7 @@ export default function SellerOrders() {
   useEffect(() => {
     const getSales = async () => {
       const user = JSON.parse(localStorage.getItem('user'));
-      const { data } = await api.get('http://localhost:3001/sales');
+      const { data } = await getSalesAxios();
       const filter = data.filter((sale) => sale.sellerId === user.id);
       setSales(filter);
     };

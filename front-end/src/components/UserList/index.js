@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { users as userRedux } from '../../redux/reducer/login';
+import { getUserAxios, deleteUserAxios } from '../../utils/axios';
 
 export default function UserList() {
   const [api, setApi] = useState([]);
@@ -13,8 +13,7 @@ export default function UserList() {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const URL = 'http://localhost:3001/user';
-        const { data } = await axios.get(URL);
+        const { data } = await getUserAxios();
         setApi(data);
       } catch (err) {
         console.log(err);
@@ -27,14 +26,8 @@ export default function UserList() {
   }, [newUser, api]);
 
   const deleteUser = async (id) => {
-    const user = JSON.parse(localStorage.getItem('user'));
     try {
-      const URL = `http://localhost:3001/user/${id}`;
-      const { data } = await axios.delete(URL, {
-        headers: {
-          Authorization: user.token,
-        },
-      });
+      const { data } = await deleteUserAxios(id);
       setApi(data);
       dispatch(userRedux(data));
     } catch (err) {
