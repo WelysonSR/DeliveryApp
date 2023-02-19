@@ -4,7 +4,7 @@ const getUser = () => JSON.parse(localStorage.getItem('user'));
 const user = getUser();
 
 export const registerAdmAxios = async (data) => {
-  const URL = 'http://localhost:3001/user/register-adm';
+  const URL = 'https://deliveryapp-production-ca7e.up.railway.app/user/register-adm';
   const response = await axios.post(URL, data, {
     headers: {
       Authorization: user.token,
@@ -14,19 +14,19 @@ export const registerAdmAxios = async (data) => {
 };
 
 export const getUserAxios = async () => {
-  const URL = 'http://localhost:3001/user';
+  const URL = 'https://deliveryapp-production-ca7e.up.railway.app/user';
   const response = await axios.get(URL);
   return response;
 };
 
 export const getSalesAxios = async () => {
-  const URL = 'http://localhost:3001/sales';
+  const URL = 'https://deliveryapp-production-ca7e.up.railway.app/sales';
   const response = await axios.get(URL);
   return response;
 };
 
 export const deleteUserAxios = async (id) => {
-  const URL = `http://localhost:3001/user/${id}`;
+  const URL = `https://deliveryapp-production-ca7e.up.railway.app/user/${id}`;
   const response = await axios.delete(URL, {
     headers: {
       Authorization: user.token,
@@ -36,7 +36,7 @@ export const deleteUserAxios = async (id) => {
 };
 
 export const registerSalesAxios = async (data) => {
-  const URL = 'http://localhost:3001/sales/';
+  const URL = 'https://deliveryapp-production-ca7e.up.railway.app/sales/';
   const response = await axios.post(URL, data, {
     headers: {
       Authorization: user.token,
@@ -46,31 +46,31 @@ export const registerSalesAxios = async (data) => {
 };
 
 export const loginAxios = async (data) => {
-  const URL = 'http://localhost:3001/user/login';
+  const URL = 'https://deliveryapp-production-ca7e.up.railway.app/user/login';
   const response = await axios.post(URL, data);
   return response;
 };
 
 export const productAxios = async () => {
-  const URL = 'http://localhost:3001/product';
+  const URL = 'https://deliveryapp-production-ca7e.up.railway.app/product';
   const response = await axios.get(URL);
   return response;
 };
 
 export const registerAxios = async (data) => {
-  const URL = 'http://localhost:3001/user/register';
+  const URL = 'https://deliveryapp-production-ca7e.up.railway.app/user/register';
   const response = await axios.post(URL, data);
   return response;
 };
 
 export const salesIdAxios = async (paramsId) => {
-  const URL = `http://localhost:3001/sales/${paramsId}`;
+  const URL = `https://deliveryapp-production-ca7e.up.railway.app/sales/${paramsId}`;
   const response = await axios.get(URL);
   return response;
 };
 
 export const patchStatusAxios = async (paramsId, status) => {
-  const URL = `http://localhost:3001/sales/${paramsId}`;
+  const URL = `https://deliveryapp-production-ca7e.up.railway.app/sales/${paramsId}`;
   const response = await axios.patch(URL, { status }, {
     headers: {
       Authorization: user.token,
