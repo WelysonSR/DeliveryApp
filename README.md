@@ -12,4 +12,4 @@
 <br>
 
 # [Acesse a documentação por aqui!](https://documenter.getpostman.com/view/25807192/2s93CHvFGo)
-# [Acesse o projeto por aqui!](https://secretive-writer-production.up.railway.app/login)
+# [Acesse o projeto por aqui!](https://delivery-app-amber.vercel.app/login)
