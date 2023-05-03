@@ -6,6 +6,7 @@ const options = {
   database:process.env.MYSQLDATABASE,
   username: process.env.MYSQLUSER,
   password: process.env.MYSQLPASSWORD,
+  dialect: 'mysql',
   dialectOptions: {
     timezone: 'Z',
   },
