@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL_BASE = 'https://smelly-achiever-production.up.railway.app';
+const URL_BASE = 'https://frightened-soap-production.up.railway.app';
 
 const getUser = () => JSON.parse(localStorage.getItem('user'));
 const user = getUser();
