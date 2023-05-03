@@ -14,7 +14,13 @@ const options = {
 };
 
 module.exports = {
-  development: options,
-  test: options,
-  production: options,
+  development: {
+    ...options,
+  },
+  test: {
+    ...options,
+  },
+  production: {
+    ...options,
+  },
 };
