@@ -13,3 +13,19 @@
 
 # [Acesse a documentação por aqui!](https://documenter.getpostman.com/view/25807192/2s93CHvFGo)
 # [Acesse o projeto por aqui!](https://delivery-app-amber.vercel.app/login)
+  * Login de test:
+    - Adm: 
+      > Email: 'adm@deliveryapp.com'
+      > Senha: '--adm2@21!!--'
+    - Funsionario:
+      > Email: 'fulana@deliveryapp.com'
+      > Senha: 'fulana@123'
+    - Clinete:
+      > Email: 'zebirita@email.com'
+      > Senha: '$#zebirita#$'
+      
+#### Obs:
+O back-end esta hospedado na plataforma Raliway, que oferece gratuitamente 500 Hrs é $ 5 por mês para testes.
+Caso a aplicação não esteja logando devido ao uso total do benefício da plataforma, é tenha enternece de ver a aplicação funcionado entre em contato!
+
+Ate logo!
