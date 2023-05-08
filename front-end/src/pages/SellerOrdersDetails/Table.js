@@ -16,32 +16,32 @@ function Table({ details }) {
 
       <tbody>
         { details && details
-          .products.map(({ id, name, salesProduct, price }, index) => (
-            <tr key={ index }>
+          .products.map(({ id, name, salesProduct, price }) => (
+            <tr key={ id }>
               <td
                 data-testid={
-                  `seller_order_details__element-order-table-item-number-${index}`
+                  `seller_order_details__element-order-table-item-number-${id}`
                 }
               >
                 { id }
               </td>
               <td
                 data-testid={
-                  `seller_order_details__element-order-table-name-${index}`
+                  `seller_order_details__element-order-table-name-${id}`
                 }
               >
                 { name }
               </td>
               <td
                 data-testid={
-                  `seller_order_details__element-order-table-quantity-${index}`
+                  `seller_order_details__element-order-table-quantity-${id}`
                 }
               >
                 { salesProduct.quantity }
               </td>
               <td
                 data-testid={
-                  `seller_order_details__element-order-table-unit-price-${index}`
+                  `seller_order_details__element-order-table-unit-price-${id}`
                 }
               >
                 <span>R$ </span>
@@ -49,7 +49,7 @@ function Table({ details }) {
               </td>
               <td
                 data-testid={
-                  `seller_order_details__element-order-table-sub-total-${index}`
+                  `seller_order_details__element-order-table-sub-total-${id}`
                 }
               >
                 <span>R$ </span>
