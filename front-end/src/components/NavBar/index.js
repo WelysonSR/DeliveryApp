@@ -32,10 +32,14 @@ export default function NavBar() {
   return (
     <S.Header className="p-2 mb-1 bg-danger-subtle text-emphasis-danger">
       <S.LoginInfo>
-        <img src="https://img.freepik.com/free-vector/way-concept-illustration_114360-1191.jpg?w=1380&t=st=1675524773~exp=1675525373~hmac=f64ba640cf5155329e381faa0e96192a31b363273ee9a769f9cbb20effd1f90e" alt="delivery app logo" className="rounded" />
+        <img
+          src="https://img.freepik.com/free-vector/way-concept-illustration_114360-1191.jpg?w=1380&t=st=1675524773~exp=1675525373~hmac=f64ba640cf5155329e381faa0e96192a31b363273ee9a769f9cbb20effd1f90e"
+          alt="delivery app logo"
+          className="rounded"
+        />
         <section className="bg-light-subtle rounded p-2">
           <p>
-            {user && user.role }
+            {user.role}
           </p>
           <p
             data-testid="customer_products__element-navbar-user-full-name"
