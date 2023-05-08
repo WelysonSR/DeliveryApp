@@ -18,12 +18,12 @@ function Form() {
       try {
         const { data } = await getUserAxios();
         const result = data.filter((u) => u.role === 'seller');
-        setApi(result);
+        return result;
       } catch (err) {
         console.log(err);
       }
     };
-    getAxios();
+    setApi(getAxios());
     setUser(JSON.parse(localStorage.getItem('user')));
   }, []);
 
