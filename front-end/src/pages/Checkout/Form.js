@@ -12,18 +12,18 @@ function Form() {
   const [user, setUser] = useState({});
 
   const cart = useSelector(({ products }) => products.checkout);
+  const getAxios = async () => {
+    try {
+      const { data } = await getUserAxios();
+      const result = await data.filter((u) => u.role === 'seller');
+      setApi(result);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
-    const getAxios = async () => {
-      try {
-        const { data } = await getUserAxios();
-        const result = data.filter((u) => u.role === 'seller');
-        return result;
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    setApi(getAxios());
+    getAxios();
     setUser(JSON.parse(localStorage.getItem('user')));
   }, []);
 
