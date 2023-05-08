@@ -31,9 +31,9 @@ export default function NewUser() {
   useEffect(() => {
     const getUser = async () => {
       const { data } = await getUserAxios();
-      dispatch(userRedux(data));
+      return data;
     };
-    getUser();
+    dispatch(userRedux(getUser()));
   }, [counter, dispatch]);
 
   useEffect(() => {
