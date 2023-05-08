@@ -15,14 +15,14 @@ export default function SellerOrderDetails() {
   useEffect(() => {
     const getDetails = async () => {
       const { data } = await salesIdAxios(paramsId);
-      setDetails(data);
       const momentDate = moment(data.saleDate);
-      setDate(momentDate.format('DD/MM/YYYY'));
-      setStatus(data.status);
+      return { data, momentDate };
     };
-    getDetails();
+    const { data, momentDate } = getDetails();
+    setDetails(data);
+    setDate(momentDate.format('DD/MM/YYYY'));
+    setStatus(data.status);
   }, [paramsId]);
-  // return (<div> oi</div>);
 
   const changeStatus = async (id, param) => {
     await patchStatusAxios(id, param);
