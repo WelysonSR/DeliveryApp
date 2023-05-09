@@ -16,12 +16,11 @@ export default function SellerOrderDetails() {
     const getDetails = async () => {
       const { data } = await salesIdAxios(paramsId);
       const momentDate = moment(data.saleDate);
-      return { data, momentDate };
+      setDetails(data);
+      setDate(momentDate.format('DD/MM/YYYY'));
+      setStatus(data.status);
     };
-    const { data, momentDate } = getDetails();
-    setDetails(data);
-    setDate(momentDate.format('DD/MM/YYYY'));
-    setStatus(data.status);
+    getDetails();
   }, [paramsId]);
 
   const changeStatus = async (id, param) => {
