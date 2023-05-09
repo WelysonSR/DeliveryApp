@@ -15,49 +15,48 @@ function Table({ details }) {
       </thead>
 
       <tbody>
-        { details && details
-          .products.map(({ id, name, salesProduct, price }) => (
-            <tr key={ id }>
-              <td
-                data-testid={
-                  `seller_order_details__element-order-table-item-number-${id}`
-                }
-              >
-                { id }
-              </td>
-              <td
-                data-testid={
-                  `seller_order_details__element-order-table-name-${id}`
-                }
-              >
-                { name }
-              </td>
-              <td
-                data-testid={
-                  `seller_order_details__element-order-table-quantity-${id}`
-                }
-              >
-                { salesProduct.quantity }
-              </td>
-              <td
-                data-testid={
-                  `seller_order_details__element-order-table-unit-price-${id}`
-                }
-              >
-                <span>R$ </span>
-                { price.toString().replace('.', ',') }
-              </td>
-              <td
-                data-testid={
-                  `seller_order_details__element-order-table-sub-total-${id}`
-                }
-              >
-                <span>R$ </span>
-                { (Number(price) * Number(salesProduct.quantity)).toFixed(2)
-                  .toString().replace('.', ',') }
-              </td>
-            </tr>
-          ))}
+        { details.products.map(({ id, name, salesProduct, price }) => (
+          <tr key={ id }>
+            <td
+              data-testid={
+                `seller_order_details__element-order-table-item-number-${id}`
+              }
+            >
+              { id }
+            </td>
+            <td
+              data-testid={
+                `seller_order_details__element-order-table-name-${id}`
+              }
+            >
+              { name }
+            </td>
+            <td
+              data-testid={
+                `seller_order_details__element-order-table-quantity-${id}`
+              }
+            >
+              { salesProduct.quantity }
+            </td>
+            <td
+              data-testid={
+                `seller_order_details__element-order-table-unit-price-${id}`
+              }
+            >
+              <span>R$ </span>
+              { price.toString().replace('.', ',') }
+            </td>
+            <td
+              data-testid={
+                `seller_order_details__element-order-table-sub-total-${id}`
+              }
+            >
+              <span>R$ </span>
+              { (Number(price) * Number(salesProduct.quantity)).toFixed(2)
+                .toString().replace('.', ',') }
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
 
