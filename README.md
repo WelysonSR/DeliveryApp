@@ -11,6 +11,9 @@
 
 <br>
 
+## Codigo verificado pelo Sonar Cloud
+![Badge](https://live.staticflickr.com/65535/52881795092_a569186e51_n.jpg)
+
 # [Acesse a documentação por aqui!](https://documenter.getpostman.com/view/25807192/2s93CHvFGo)
 # <a href="https://delivery-app-amber.vercel.app/login" target="_blank">Acesse o projeto por aqui!</a>
   * Login de test:
