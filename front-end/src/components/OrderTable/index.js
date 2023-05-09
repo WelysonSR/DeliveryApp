@@ -55,7 +55,7 @@ export default function OrderTable() {
   const rows = () => {
     if (cart.length !== 0 || cart.length !== undefined) {
       return (cart.filter((item) => item.quantity > 0).map((e, i) => (
-        <tr key={ i }>
+        <tr key={ e.id }>
           <td data-testid={ `${tableNumber}${i}` }>{i + 1}</td>
           <td data-testid={ `${tableName}${i}` }>{e.name}</td>
           <td data-testid={ `${tableQuantity}${i}` }>{e.quantity}</td>
