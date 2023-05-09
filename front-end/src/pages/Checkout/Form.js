@@ -74,9 +74,9 @@ function Form() {
           onChange={ ({ target }) => setSeller(target.value) }
           value={ api[0] }
         >
-          { api.map((e, index) => (
+          { api.map((e) => (
             <option
-              key={ index }
+              key={ e.id }
               value={ e }
             >
               {e.name}
