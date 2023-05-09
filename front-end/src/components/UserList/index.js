@@ -10,15 +10,16 @@ export default function UserList() {
 
   const newUser = useSelector(({ login }) => login.users);
 
+  const getUser = async () => {
+    try {
+      const { data } = await getUserAxios();
+      setApi(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    const getUser = async () => {
-      try {
-        const { data } = await getUserAxios();
-        setApi(data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     getUser();
     if (api.length < newUser.length) {
       setApi(newUser);
