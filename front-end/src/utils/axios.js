@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const URL_BASE = 'https://frightened-soap-production.up.railway.app';
+// const URL_BASE = 'http://localhost:3001';
 
 const getUser = () => JSON.parse(localStorage.getItem('user'));
 const user = getUser();
